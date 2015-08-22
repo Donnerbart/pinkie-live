@@ -1,21 +1,20 @@
 package com.derpfish.pinkielive.animation;
 
-import java.io.File;
-
 import android.graphics.Canvas;
 
-public interface PonyAnimation
-{
-	public void setResourceDir(final File resourceDir);
-	
-	public void initialize(int surfaceWidth, int surfaceHeight, float tapX, float tapY);
+import java.io.File;
 
-	public void drawAnimation(Canvas canvas, long elapsedTime);
+public interface PonyAnimation {
+    public void setResourceDir(final File resourceDir);
 
-	public boolean isComplete();
+    public void initialize(int surfaceWidth, int surfaceHeight, float tapX, float tapY);
 
-	public void onCreate();
+    public void drawAnimation(Canvas canvas, long elapsedTime);
 
-	public void onDestroy();
+    public boolean isComplete();
+
+    public void onCreate();
+
+    public void onDestroy();
 
 }

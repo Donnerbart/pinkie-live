@@ -1,19 +1,17 @@
 package com.derpfish.pinkielive.preference;
 
-import com.derpfish.pinkielive.PinkiePieLiveWallpaper;
-import com.derpfish.pinkielive.R;
-
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
-public class PinkiePieLiveWallpaperSettingsAdvanced extends PreferenceActivity
-{
-	@Override
-	protected void onCreate(Bundle icicle)
-	{
-		super.onCreate(icicle);
+import com.derpfish.pinkielive.PinkiePieLiveWallpaper;
+import com.derpfish.pinkielive.R;
 
-		getPreferenceManager().setSharedPreferencesName(PinkiePieLiveWallpaper.SHARED_PREFS_NAME);
-		addPreferencesFromResource(R.xml.livewallpaper_settings_advanced);
-	}
+public class PinkiePieLiveWallpaperSettingsAdvanced extends PreferenceActivity {
+    @Override
+    protected void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+        getPreferenceManager().setSharedPreferencesName(PinkiePieLiveWallpaper.SHARED_PREFS_NAME);
+        addPreferencesFromResource(R.xml.livewallpaper_settings_advanced);
+    }
 }
