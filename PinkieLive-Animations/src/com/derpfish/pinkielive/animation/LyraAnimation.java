@@ -38,9 +38,6 @@ public class LyraAnimation implements PonyAnimation {
 
     private File resourceDir;
 
-    public LyraAnimation() {
-    }
-
     @Override
     public void initialize(int surfaceWidth, int surfaceHeight, float tapX, float tapY) {
         this.surfaceWidth = surfaceWidth;

@@ -39,9 +39,6 @@ public class TwilightAnimation implements PonyAnimation {
 
     private File resourceDir;
 
-    public TwilightAnimation() {
-    }
-
     @Override
     public void initialize(int surfaceWidth, int surfaceHeight, float tapX, float tapY) {
         this.surfaceWidth = surfaceWidth;

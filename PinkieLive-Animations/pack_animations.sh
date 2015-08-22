@@ -6,10 +6,10 @@ pack_anim() {
   COUNTER=0
   for FOO in "$@"; do
     let "COUNTER+=1"
-    if [ $COUNTER -lt 6 ] ; then
+    if [ ${COUNTER} -lt 6 ] ; then
       continue
     fi
-    cp assets/$FOO target/
+    cp assets/${FOO} target/
   done
   cat <<EOF > target/manifest.properties
 id=$2
@@ -19,7 +19,7 @@ className=$5
 EOF
   cd bin/classes
   CLASSFILE=`echo -n "$5" | sed 's/\./\//g'`
-  jar cf lib.jar $CLASSFILE*.class
+  jar cf lib.jar ${CLASSFILE}*.class
   ~/Downloads/android-sdk-linux/platform-tools/dx --dex --output=../../target/lib.jar lib.jar
   rm lib.jar
   cd ../../target

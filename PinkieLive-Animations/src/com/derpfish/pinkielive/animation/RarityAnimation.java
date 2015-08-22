@@ -31,9 +31,6 @@ public class RarityAnimation implements PonyAnimation {
 
     private File resourceDir;
 
-    public RarityAnimation() {
-    }
-
     @Override
     public void initialize(int surfaceWidth, int surfaceHeight, float tapX, float tapY) {
         this.surfaceWidth = surfaceWidth;

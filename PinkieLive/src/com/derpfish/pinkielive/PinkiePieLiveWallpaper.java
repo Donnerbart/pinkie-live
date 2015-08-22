@@ -46,11 +46,6 @@ public class PinkiePieLiveWallpaper extends WallpaperService {
     private PonyAnimation selectedPony;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-    }
-
-    @Override
     public void onDestroy() {
         if (defaultBg != null) {
             defaultBg.recycle();
@@ -250,11 +245,6 @@ public class PinkiePieLiveWallpaper extends WallpaperService {
             surfaceWidth = width;
             surfaceHeight = height;
             drawFrame();
-        }
-
-        @Override
-        public void onSurfaceCreated(SurfaceHolder holder) {
-            super.onSurfaceCreated(holder);
         }
 
         @Override

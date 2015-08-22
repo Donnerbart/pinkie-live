@@ -44,11 +44,6 @@ public class PinkiePieLiveWallpaperSettings extends PreferenceActivity implement
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
     protected void onDestroy() {
         getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
         super.onDestroy();

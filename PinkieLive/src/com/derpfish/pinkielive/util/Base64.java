@@ -200,7 +200,7 @@ public class Base64 {
          * Decode lookup table for the "web safe" variant (RFC 3548
          * sec. 4) where - and _ replace + and /.
          */
-        private static final int DECODE_WEBSAFE[] = {
+        private static final int DECODE_WEB_SAFE[] = {
                 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1,
@@ -242,7 +242,7 @@ public class Base64 {
         public Decoder(int flags, byte[] output) {
             this.output = output;
 
-            alphabet = ((flags & URL_SAFE) == 0) ? DECODE : DECODE_WEBSAFE;
+            alphabet = ((flags & URL_SAFE) == 0) ? DECODE : DECODE_WEB_SAFE;
             state = 0;
             value = 0;
         }

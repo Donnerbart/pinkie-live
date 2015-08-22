@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory;
 
 import java.io.InputStream;
 
-public class BitmapLoader {
+class BitmapLoader {
 
     public static Bitmap decodeSampledBitmapFromInputStream(InputStream inputStream, int sampleSize) {
         BitmapFactory.Options options = new BitmapFactory.Options();

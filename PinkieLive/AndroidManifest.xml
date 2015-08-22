@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.derpfish.pinkielive"
-    android:versionName="1.2.2"
-    android:versionCode="5">
+    android:versionCode="5"
+    android:versionName="1.2.2">
 
     <uses-sdk
         android:minSdkVersion="7"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="23" />
     <uses-feature android:name="android.software.live_wallpaper" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,13 +14,15 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@drawable/ic_launcher"
         android:label="Pinkie Pie Live">
 
         <service
             android:name=".PinkiePieLiveWallpaper"
-            android:label="Pinkie Pie Live"
             android:icon="@drawable/ic_launcher"
+            android:label="Pinkie Pie Live"
             android:permission="android.permission.BIND_WALLPAPER">
 
             <intent-filter>
@@ -38,14 +40,14 @@
         </service>
 
         <activity
-            android:label="Settings"
             android:name=".preference.PinkiePieLiveWallpaperSettings"
-            android:theme="@android:style/Theme.Light.WallpaperSettings"
             android:exported="true"
-            android:icon="@drawable/ic_launcher"></activity>
+            android:icon="@drawable/ic_launcher"
+            android:label="Settings"
+            android:theme="@android:style/Theme.Light.WallpaperSettings" />
         <activity
-            android:label="Advanced Settings"
             android:name=".preference.PinkiePieLiveWallpaperSettingsAdvanced"
+            android:label="Advanced Settings"
             android:theme="@android:style/Theme.Light">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
