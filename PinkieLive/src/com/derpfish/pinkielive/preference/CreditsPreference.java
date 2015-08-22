@@ -14,7 +14,8 @@ import android.widget.TextView;
 import com.derpfish.pinkielive.R;
 
 public class CreditsPreference extends DialogPreference {
-    private View view = null;
+
+    private View view;
 
     public CreditsPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -31,17 +32,17 @@ public class CreditsPreference extends DialogPreference {
     }
 
     @Override
-    public void onPrepareDialogBuilder(final AlertDialog.Builder builder) {
+    public void onPrepareDialogBuilder(AlertDialog.Builder builder) {
         super.onPrepareDialogBuilder(builder);
 
         if (view == null) {
-            final TextView textView = new TextView(getContext());
+            TextView textView = new TextView(getContext());
             textView.setBackgroundColor(Color.WHITE);
             textView.setTextSize(18.0f);
             textView.setText(Html.fromHtml(getContext().getString(R.string.credits_string)));
             textView.setMovementMethod(LinkMovementMethod.getInstance());
 
-            final ScrollView scrollView = new ScrollView(getContext());
+            ScrollView scrollView = new ScrollView(getContext());
             scrollView.setFillViewport(true);
             scrollView.addView(textView);
 

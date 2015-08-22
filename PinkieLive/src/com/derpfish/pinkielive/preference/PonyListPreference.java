@@ -21,17 +21,17 @@ public class PonyListPreference extends ListPreference {
     }
 
     @Override
-    protected void onPrepareDialogBuilder(final AlertDialog.Builder builder) {
+    protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
         // Setup the dynamic pony list
-        final List<PonyAnimationContainer> animations;
+        List<PonyAnimationContainer> animations;
         try {
             animations = PonyDownloader.getPonyAnimations(
                     getContext().getFilesDir(), getContext().getCacheDir(), false);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        final String[] entries = new String[animations.size() + 1];
-        final String[] entryValues = new String[animations.size() + 1];
+        String[] entries = new String[animations.size() + 1];
+        String[] entryValues = new String[animations.size() + 1];
         entries[0] = "Pinkie Pie";
         entryValues[0] = "pinkie";
         for (int i = 0; i < animations.size(); i++) {
@@ -43,5 +43,4 @@ public class PonyListPreference extends ListPreference {
 
         super.onPrepareDialogBuilder(builder);
     }
-
 }

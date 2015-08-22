@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PonyDownloadListPreference extends DialogPreference implements View.OnClickListener {
+
     public PonyDownloadListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -33,8 +34,8 @@ public class PonyDownloadListPreference extends DialogPreference implements View
         super(context, attrs, defStyle);
     }
 
-    private Map<String, PonyAnimationContainer> currentPonies = new HashMap<String, PonyAnimationContainer>();
-    private List<PonyAnimationListing> newListings = new ArrayList<PonyAnimationListing>();
+    private final Map<String, PonyAnimationContainer> ponyMap = new HashMap<>();
+    private final List<PonyAnimationListing> newListings = new ArrayList<>();
 
     @Override
     protected void onClick() {
@@ -68,15 +69,14 @@ public class PonyDownloadListPreference extends DialogPreference implements View
         }.execute();
     }
 
-    private void doRealOnclick(final List<PonyAnimationContainer> currentPonies, final List<PonyAnimationListing> animListings) {
-        this.currentPonies.clear();
-        for (final PonyAnimationContainer pac : currentPonies) {
-            this.currentPonies.put(pac.getId(), pac);
+    private void doRealOnclick(List<PonyAnimationContainer> currentPonies, List<PonyAnimationListing> animationListings) {
+        ponyMap.clear();
+        for (PonyAnimationContainer pac : currentPonies) {
+            ponyMap.put(pac.getId(), pac);
         }
         newListings.clear();
-        for (final PonyAnimationListing pal : animListings) {
-            if (!this.currentPonies.containsKey(pal.getId())
-                    || this.currentPonies.get(pal.getId()).getVersion() < pal.getVersion()) {
+        for (PonyAnimationListing pal : animationListings) {
+            if (!ponyMap.containsKey(pal.getId()) || ponyMap.get(pal.getId()).getVersion() < pal.getVersion()) {
                 newListings.add(pal);
             }
         }
@@ -85,10 +85,10 @@ public class PonyDownloadListPreference extends DialogPreference implements View
     }
 
     @Override
-    public void onPrepareDialogBuilder(final AlertDialog.Builder builder) {
+    public void onPrepareDialogBuilder(AlertDialog.Builder builder) {
         super.onPrepareDialogBuilder(builder);
 
-        final ListView listView = new ListView(getContext());
+        ListView listView = new ListView(getContext());
         listView.setAdapter(new PonyAnimationsAdapter(getContext(), 0, newListings));
         listView.setBackgroundColor(Color.WHITE);
 
@@ -104,16 +104,16 @@ public class PonyDownloadListPreference extends DialogPreference implements View
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            final View view;
+            View view;
             if (convertView == null) {
                 view = View.inflate(getContext(), R.layout.pony_listing, null);
             } else {
                 view = convertView;
             }
             view.setId(position);
-            ((TextView) view.findViewById(R.id.title)).setText(this.getItem(position).getName());
+            ((TextView) view.findViewById(R.id.title)).setText(getItem(position).getName());
 
-            if (!currentPonies.containsKey(newListings.get(position).getId())) {
+            if (!ponyMap.containsKey(newListings.get(position).getId())) {
                 ((TextView) view.findViewById(R.id.summary)).setText("New Pony!");
             } else {
                 ((TextView) view.findViewById(R.id.summary)).setText("Update Available!");
@@ -123,10 +123,9 @@ public class PonyDownloadListPreference extends DialogPreference implements View
         }
     }
 
-
     @Override
     public void onClick(View view) {
-        final int which = view.getId();
+        int which = view.getId();
         new AsyncTask<Void, Void, Void>() {
             private ProgressDialog dialog;
 
@@ -153,5 +152,4 @@ public class PonyDownloadListPreference extends DialogPreference implements View
             }
         }.execute();
     }
-
 }

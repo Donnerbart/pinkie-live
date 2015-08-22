@@ -6,18 +6,19 @@ import android.graphics.BitmapFactory;
 import java.io.InputStream;
 
 public class BitmapLoader {
-    public static Bitmap decodeSampledBitmapFromInputStream(InputStream istream, int sampleSize) {
-        final BitmapFactory.Options options = new BitmapFactory.Options();
+
+    public static Bitmap decodeSampledBitmapFromInputStream(InputStream inputStream, int sampleSize) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = false;
         options.inSampleSize = sampleSize;
-        return BitmapFactory.decodeStream(istream, null, options);
+        return BitmapFactory.decodeStream(inputStream, null, options);
     }
 
-    public static int getSampleSizeFromInputStream(InputStream istream, int reqWidth, int reqHeight) {
+    public static int getSampleSizeFromInputStream(InputStream inputStream, int reqWidth, int reqHeight) {
         // First decode with inJustDecodeBounds=true to check dimensions
-        final BitmapFactory.Options options = new BitmapFactory.Options();
+        BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-        BitmapFactory.decodeStream(istream, null, options);
+        BitmapFactory.decodeStream(inputStream, null, options);
 
         // Calculate inSampleSize
         return calculateInSampleSize(options, reqWidth, reqHeight);
@@ -25,8 +26,8 @@ public class BitmapLoader {
 
     private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
+        int height = options.outHeight;
+        int width = options.outWidth;
 
         return Math.max(1, Math.max(
                 Math.round((float) height / (float) reqHeight),

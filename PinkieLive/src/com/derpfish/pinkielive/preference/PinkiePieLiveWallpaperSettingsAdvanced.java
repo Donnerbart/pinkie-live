@@ -7,6 +7,7 @@ import com.derpfish.pinkielive.PinkiePieLiveWallpaper;
 import com.derpfish.pinkielive.R;
 
 public class PinkiePieLiveWallpaperSettingsAdvanced extends PreferenceActivity {
+
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);

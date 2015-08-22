@@ -5,16 +5,16 @@ import android.graphics.Canvas;
 import java.io.File;
 
 public interface PonyAnimation {
-    public void setResourceDir(final File resourceDir);
 
-    public void initialize(int surfaceWidth, int surfaceHeight, float tapX, float tapY);
+    void setResourceDir(final File resourceDir);
 
-    public void drawAnimation(Canvas canvas, long elapsedTime);
+    void initialize(int surfaceWidth, int surfaceHeight, float tapX, float tapY);
 
-    public boolean isComplete();
+    void drawAnimation(Canvas canvas, long elapsedTime);
 
-    public void onCreate();
+    boolean isComplete();
 
-    public void onDestroy();
+    void onCreate();
 
+    void onDestroy();
 }

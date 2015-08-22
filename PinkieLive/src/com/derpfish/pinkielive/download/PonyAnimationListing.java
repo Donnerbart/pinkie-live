@@ -1,6 +1,7 @@
 package com.derpfish.pinkielive.download;
 
 public class PonyAnimationListing {
+
     private String name;
     private String url;
     private String id;

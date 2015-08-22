@@ -3,6 +3,7 @@ package com.derpfish.pinkielive.download;
 import com.derpfish.pinkielive.animation.PonyAnimation;
 
 public class PonyAnimationContainer {
+    
     private String id;
     private String name;
     private Long version;

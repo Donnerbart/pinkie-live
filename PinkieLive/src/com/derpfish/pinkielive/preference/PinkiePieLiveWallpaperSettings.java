@@ -13,6 +13,7 @@ import com.derpfish.pinkielive.PinkiePieLiveWallpaper;
 import com.derpfish.pinkielive.R;
 
 public class PinkiePieLiveWallpaperSettings extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener, OnPreferenceClickListener {
+
     private static final int SELECT_PICTURE = 1;
 
     private Intent gallery;
@@ -36,7 +37,7 @@ public class PinkiePieLiveWallpaperSettings extends PreferenceActivity implement
     }
 
     private void setDefaultBgEnabled() {
-        final SharedPreferences sharedPr = getPreferenceManager().getSharedPreferences();
+        SharedPreferences sharedPr = getPreferenceManager().getSharedPreferences();
         findPreference("livewallpaper_defaultbg").setEnabled(
                 !sharedPr.getBoolean("livewallpaper_defaultbg", true)
                         || sharedPr.getString("livewallpaper_image", null) != null);

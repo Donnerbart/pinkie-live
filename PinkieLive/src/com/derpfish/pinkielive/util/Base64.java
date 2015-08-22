@@ -25,7 +25,9 @@ import java.io.UnsupportedEncodingException;
  * href="http://www.ietf.org/rfc/rfc2045.txt">2045</a> and <a
  * href="http://www.ietf.org/rfc/rfc3548.txt">3548</a>.
  */
+@SuppressWarnings("unused")
 public class Base64 {
+
     /**
      * Default values for encoder/decoder flags.
      */
@@ -59,7 +61,7 @@ public class Base64 {
     public static final int URL_SAFE = 8;
 
     /**
-     * Flag to pass to {@link Base64OutputStream} to indicate that it
+     * Flag to pass to Base64OutputStream to indicate that it
      * should not close the output stream it is wrapping when it
      * itself is closed.
      */
@@ -566,7 +568,7 @@ public class Base64 {
          * Lookup table for turning Base64 alphabet positions (6 bits)
          * into output bytes.
          */
-        private static final byte ENCODE_WEBSAFE[] = {
+        private static final byte ENCODE_WEB_SAFE[] = {
                 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
                 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
                 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
@@ -588,7 +590,7 @@ public class Base64 {
             do_padding = (flags & NO_PADDING) == 0;
             do_newline = (flags & NO_WRAP) == 0;
             do_cr = (flags & CRLF) != 0;
-            alphabet = ((flags & URL_SAFE) == 0) ? ENCODE : ENCODE_WEBSAFE;
+            alphabet = ((flags & URL_SAFE) == 0) ? ENCODE : ENCODE_WEB_SAFE;
 
             tail = new byte[2];
             tailLen = 0;
@@ -633,7 +635,6 @@ public class Base64 {
                                 (input[p++] & 0xff);
                         tailLen = 0;
                     }
-                    ;
                     break;
 
                 case 2:
