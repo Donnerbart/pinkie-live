@@ -125,7 +125,7 @@ public class PonyDownloadListPreference extends DialogPreference implements View
 
     @Override
     public void onClick(View view) {
-        int which = view.getId();
+        final int which = view.getId();
         new AsyncTask<Void, Void, Void>() {
             private ProgressDialog dialog;
 

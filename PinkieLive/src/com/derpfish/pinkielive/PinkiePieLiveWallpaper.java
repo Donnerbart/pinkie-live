@@ -77,7 +77,11 @@ public class PinkiePieLiveWallpaper extends WallpaperService {
 
         private final Handler mHandler = new Handler();
         private final Paint mPaint = new Paint();
-        private final Runnable mDrawPattern = this::drawFrame;
+        private final Runnable mDrawPattern = new Runnable() {
+            public void run() {
+                drawFrame();
+            }
+        };
 
         private final SharedPreferences mPreferences;
         private final BroadcastReceiver broadcastReceiver;
